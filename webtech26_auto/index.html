@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taxi Register - Senior Client</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="container header-flex">
+            <div class="brand">
+                <h1>Taxi Register</h1>
+                <span class="badge">Marci</span>
+            </div>
+            <div class="nav-controls">
+                <div class="neptun-container">
+                    <input type="text" id="neptun-id" placeholder="Neptun kód" value="TEST01">
+                    <button id="btn-refresh" class="btn btn-nav">Frissítés</button>
+                </div>
+                <button id="btn-create-view" class="btn btn-primary">➕ Új autó</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="section-list" class="view">
+            <div class="card shadow-sm">
+<table class="data-table">
+    <thead>
+        <tr>
+            <th>Márka & Modell</th>
+            <th>Tulajdonos</th>
+            <th>Fogyasztás</th>
+            <th>Üzembe helyezés</th> <th>Típus</th>
+            <th class="text-right">Műveletek</th>
+        </tr>
+    </thead>
+    <tbody id="car-table-body"></tbody>
+</table>
+            </div>
+        </section>
+
+        <section id="section-form" class="view hidden">
+            <div class="card form-card">
+                <div class="form-header">
+                    <h2 id="form-title">Autó szerkesztése</h2>
+                    <p class="subtitle">Kérjük, töltse ki az összes kötelező mezőt.</p>
+                </div>
+                <form id="car-form" novalidate>
+                    <input type="hidden" id="input-id">
+                    
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="input-brand">Márka</label>
+                            <input type="text" id="input-brand" required placeholder="Toyota">
+                        </div>
+                        <div class="field">
+                            <label for="input-model">Modell</label>
+                            <input type="text" id="input-model" required placeholder="Aygo">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="input-owner">Tulajdonos (Teljes név)</label>
+                        <input type="text" id="input-owner" required pattern=".*\s+.*" placeholder="Kovács János">
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="field">
+                            <label for="input-fuel">Fogyasztás (l/100km)</label>
+                            <input type="number" id="input-fuel" step="0.1" min="0" required>
+                        </div>
+                        <div class="field">
+                            <label for="input-date">Üzembehelyezés</label>
+                            <input type="date" id="input-date" required>
+                        </div>
+                    </div>
+
+                    <div class="field-checkbox">
+                        <input type="checkbox" id="input-electric">
+                        <label for="input-electric">Ez egy elektromos jármű</label>
+                    </div>
+
+                    <div class="form-footer">
+                        <button type="submit" class="btn btn-success">Mentés mentése</button>
+                        <button type="button" id="btn-cancel" class="btn btn-ghost">Mégse</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="app.js" type="module"></script>
+</body>
+</html>
